@@ -123,7 +123,7 @@ export function Gondola(dir) {
 
 			if (fs.existsSync(path.resolve(dir, 'gondola.js'))) {
 				const {default: defaultFunc} = await import(path.resolve(dir, 'gondola.js'))
-				userSettings = defaultFunc();
+				userSettings = await defaultFunc();
 			} else {
 				userSettings = {};
 			}
@@ -182,7 +182,7 @@ export function Gondola(dir) {
 
 		            // Check if 'config' function exists in the imported module
 		            if (typeof importedModule.config === 'function') {
-		                obj = { ...obj, ...importedModule.config() };
+		                obj = { ...obj, ...await importedModule.config() };
 		            }
 		        } catch (error) {
 		            console.error(`ERROR processing JS file at ${obj.origin}`, error);
