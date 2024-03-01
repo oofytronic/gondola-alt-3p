@@ -415,7 +415,7 @@ export function Gondola(dir) {
 								file.type = !file.type ? set.type : 'page';
 								file.state = !file.state ? set.state : file.state;
 								file.layout = !file.layout ? set.layout : file.layout;
-								file.meta = !file.meta ? set.meta : {};
+								file.meta = !file.meta ? set.meta : file.meta;
 								if (!file.name) {
 									file.name = path.basename(file.path)
 								}
